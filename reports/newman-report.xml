@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="FIT4110 Lab03 - Notification Contract Tests" tests="11" time="0.272">
+  <testsuite name="00_Health / GET /health - service is alive" id="2e2ae282-693d-422d-9ab5-72edbdd4035c" timestamp="2026-05-25T13:14:20.881Z" tests="1" failures="0" errors="0" time="0.090">
+    <testcase name="Status code is 200" time="0.090" classname="00HealthGetHealthServiceIsAlive"/>
+  </testsuite>
+  <testsuite name="01_Functional / POST /notifications - send notification" id="39e41ff8-e79f-423c-a288-1383fda37ad2" timestamp="2026-05-25T13:14:20.881Z" tests="2" failures="0" errors="0" time="0.016">
+    <testcase name="Status code is 201" time="0.016" classname="01FunctionalPostNotificationsSendNotification"/>
+    <testcase name="Response has notificationId" time="0.016" classname="01FunctionalPostNotificationsSendNotification"/>
+  </testsuite>
+  <testsuite name="02_Auth / POST /notifications - missing token is rejected" id="798dd5c7-e296-408a-be70-b85e062229bf" timestamp="2026-05-25T13:14:20.881Z" tests="1" failures="0" errors="0" time="0.014">
+    <testcase name="Skipped on mock" time="0.014" classname="02AuthPostNotificationsMissingTokenIsRejected"/>
+  </testsuite>
+  <testsuite name="02_Auth / POST /notifications - invalid token is rejected" id="c4aa3c4f-4e55-463a-b033-562dbb92b267" timestamp="2026-05-25T13:14:20.881Z" tests="1" failures="0" errors="0" time="0.016">
+    <testcase name="Skipped on mock" time="0.016" classname="02AuthPostNotificationsInvalidTokenIsRejected"/>
+  </testsuite>
+  <testsuite name="03_Negative / POST /notifications - invalid channel" id="4b5ff2f3-3889-45e9-9bce-89ca6b601eee" timestamp="2026-05-25T13:14:20.881Z" tests="2" failures="0" errors="0" time="0.016">
+    <testcase name="Invalid channel returns 400" time="0.016" classname="03NegativePostNotificationsInvalidChannel"/>
+    <testcase name="Error response follows ProblemDetails" time="0.016" classname="03NegativePostNotificationsInvalidChannel"/>
+  </testsuite>
+  <testsuite name="03_Negative / POST /notifications - missing required field" id="00354b11-afd3-44c4-9cc9-3e8aa08322fd" timestamp="2026-05-25T13:14:20.881Z" tests="1" failures="0" errors="0" time="0.024">
+    <testcase name="Missing alertId returns 400" time="0.024" classname="03NegativePostNotificationsMissingRequiredField"/>
+  </testsuite>
+  <testsuite name="04_Boundary_Reliability / POST /notifications - dedupe idempotency key (409)" id="0c0a0758-8a1b-4b8b-988f-71379b57fcd6" timestamp="2026-05-25T13:14:20.881Z" tests="1" failures="0" errors="0" time="0.017">
+    <testcase name="Duplicate idempotency key returns 409" time="0.017" classname="04BoundaryReliabilityPostNotificationsDedupeIdempotencyKey409"/>
+  </testsuite>
+  <testsuite name="04_Boundary_Reliability / POST /notifications - rate limit (429)" id="ba2bc391-c700-4cf8-a7fa-4551b0f9825f" timestamp="2026-05-25T13:14:20.881Z" tests="1" failures="0" errors="0" time="0.013">
+    <testcase name="Rate limit triggers 429" time="0.013" classname="04BoundaryReliabilityPostNotificationsRateLimit429"/>
+  </testsuite>
+  <testsuite name="04_Boundary_Reliability / POST /notifications - retry (idempotent success)" id="8dc513c8-59a4-4b5e-862e-567a08c8579a" timestamp="2026-05-25T13:14:20.881Z" tests="1" failures="0" errors="0" time="0.018">
+    <testcase name="Retry with same payload returns 201" time="0.018" classname="04BoundaryReliabilityPostNotificationsRetryIdempotentSuccess"/>
+  </testsuite>
+  <testsuite name="05_Consumer_side_Smoke / GET /alerts/{alertId} - upstream alert mock (A6 Core)" id="7781c97a-9b34-42c5-8734-ea55ab67753b" timestamp="2026-05-25T13:14:20.881Z" tests="2" failures="0" errors="0" time="0.026">
+    <testcase name="Consumer receives success from provider mock" time="0.026" classname="05ConsumerSideSmokeGetAlertsAlertIdUpstreamAlertMockA6Core"/>
+    <testcase name="Consumer can read alert fields" time="0.026" classname="05ConsumerSideSmokeGetAlertsAlertIdUpstreamAlertMockA6Core"/>
+  </testsuite>
+  <testsuite name="06_Local_only_NonFunctional / POST /notifications - latency" id="e0190d56-5a9f-4710-ab94-f26eacc27d72" timestamp="2026-05-25T13:14:20.881Z" tests="1" failures="0" errors="0" time="0.022">
+    <testcase name="Skipped on mock" time="0.022" classname="06LocalOnlyNonFunctionalPostNotificationsLatency"/>
+  </testsuite>
+</testsuites>
